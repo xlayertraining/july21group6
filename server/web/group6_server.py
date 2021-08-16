@@ -13,16 +13,16 @@ from product_search import ProductSearchHandler
 
 def make_app():
     return tornado.web.Application([
-        (r"/web/api/sign/up", SignUpHandler),
-        (r"/web/api/sign/in", SignInHandler),
-        (r"/web/api/product", ProductHandler),
-        (r"/web/api/product/image", ProductImageHandler),
-        (r"/web/api/search/news", SearchNewsHandler),
-        (r"/web/api/product/search", ProductSearchHandler),
+        (r"/julygroup6_web/api/sign/up", SignUpHandler),
+        (r"/julygroup6_web/api/sign/in", SignInHandler),
+        (r"/julygroup6_web/api/product", ProductHandler),
+        (r"/julygroup6_web/api/product/image", ProductImageHandler),
+        (r"/julygroup6_web/api/search/news", SearchNewsHandler),
+        (r"/julygroup6_web/api/product/search", ProductSearchHandler),
     ])
 
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(8888)
+    app.listen(8006)
     tornado.ioloop.IOLoop.current().start()

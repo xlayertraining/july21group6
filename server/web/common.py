@@ -26,7 +26,7 @@ if os.path.isdir(imgPath) == False:
 
 # Creating database connection and initializing databases and tables required for your backend
 client = motor.motor_asyncio.AsyncIOMotorClient("127.0.0.1", 27017)
-prithvi = client['prithvi']
-users = prithvi['users']
-products = prithvi['products']
-search_history = prithvi['search_history']
+icfaiKart = client['icfaiKart']
+users = icfaiKart['users']
+products = icfaiKart['products']
+search_history = icfaiKart['search_history']

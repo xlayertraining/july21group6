@@ -1,0 +1,90 @@
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/main.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/group6_server.py", line 7, in <module>
+    from sign_up import SignUpHandler
+  File "/home/prithviraj/icfai/july21group6/server/web/sign_up.py", line 83
+    try:
+    ^
+IndentationError: expected an indented block
+WARNING:tornado.access:405 OPTIONS /julygroup6_web/api/sign/in (127.0.0.1) 2.92ms
+WARNING:tornado.access:405 OPTIONS /julygroup6_web/api/sign/in (127.0.0.1) 0.88ms
+WARNING:tornado.access:405 OPTIONS /julygroup6_web/api/sign/in (127.0.0.1) 10.21ms
+WARNING:tornado.access:405 OPTIONS /julygroup6_web/api/sign/up (127.0.0.1) 1.38ms
+WARNING:tornado.access:405 CONNECT mxs.mail.ru:25 (89.248.165.52) 26.17ms
+WARNING:tornado.access:405 CONNECT 85.206.160.115:80 (89.248.165.52) 2.41ms
+WARNING:tornado.access:404 GET / (143.110.213.235) 2.51ms
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/./group6_server.py", line 27, in <module>
+    app.listen(8006)
+  File "/usr/local/lib/python3.9/dist-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/usr/local/lib/python3.9/dist-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/usr/local/lib/python3.9/dist-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+Traceback (most recent call last):
+  File "/home/prithviraj/icfai/july21group6/server/web/./group6_server.py", line 27, in <module>
+    app.listen(8006)
+  File "/usr/local/lib/python3.9/dist-packages/tornado/web.py", line 2109, in listen
+    server.listen(port, address)
+  File "/usr/local/lib/python3.9/dist-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/usr/local/lib/python3.9/dist-packages/tornado/netutil.py", line 161, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use

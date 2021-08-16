@@ -1,0 +1,23 @@
+#WEB SERVER
+
+#ulimit -n 10000
+
+PID_HOME="/tmp/proxy/core/icfai/group6/web"
+LOG_PATH="./log"
+LOG_FILE="$LOG_PATH/run.log"
+
+APPLICATION="group6_server.py"
+
+mkdir -p $PID_HOME
+mkdir -p $LOG_PATH
+
+PYTHON_VERSION="3"
+
+IN_LINE="nohup python$PYTHON_VERSION ./$APPLICATION > dev/null"
+#IN_LINE="python$PYTHON_VERSION ./$APPLICATION --log-file-prefix=$LOG_FILE"
+$IN_LINE &
+
+rm $PID_HOME/$APPLICATION.pid
+
+pgrep "python3 ./group6_server.py > dev/null" -f > $PID_HOME/$APPLICATION.pid
+

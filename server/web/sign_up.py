@@ -9,7 +9,7 @@ class SignUpHandler(tornado.web.RequestHandler):
         status = False
         message = ""
         result = []
-        try:
+        if True:
             try:
                 jsonBody = json.loads(self.request.body.decode())
             except:
@@ -69,17 +69,19 @@ class SignUpHandler(tornado.web.RequestHandler):
                 status = False
                 message = "Please enter valid email address"
                 raise Exception
+            '''
             else:
                 # checking if email address if of valid format
                 # Regular expression concept to check format of string in email
                 #something    @ something    . something
-                regex = r'\b[a-A-Zz0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-                email = email.lower()
-                if(re.match(regex, email)) == None:
-                    code = 9032
-                    status = False
-                    message = "Invalid Email Format"
-                    raise Exception
+                #regex = r'\b[a-A-Zz0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+                #email = email.lower()
+                #if(re.match(regex, email)) == None:
+                #    code = 9032
+                #    status = False
+                #    message = "Invalid Email Format"
+                #    raise Exception
+            '''
             try:
                 password = jsonBody.get('password')
                 if len(password) < 6 or len(password) > 15:
@@ -103,13 +105,11 @@ class SignUpHandler(tornado.web.RequestHandler):
             code = 2000
             status = True
             message = "Sign-up successfull"
-        except Exception as e:
+        else:
             status = False
             # self.set_status(400)
             if not len(message):
-                template = 'Exception: {0}. Argument: {1!r}'
                 code = 5010
-                iMessage = template.format(type(e).__name__, e.args)
                 message = 'Internal Error, Please Contact the Support Team.'
         response = {
             'code': code,
