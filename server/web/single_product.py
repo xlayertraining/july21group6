@@ -2,7 +2,7 @@ from common import *
 from auth import SecureHeader
 
 
-class ProductSearchHandler(tornado.web.RequestHandler):
+class SingleProductHandler(tornado.web.RequestHandler):
     async def get(self):
         code = 4000
         status = False
@@ -16,40 +16,35 @@ class ProductSearchHandler(tornado.web.RequestHandler):
                 message = "You're not authorized"
                 raise Exception
             try:
-                try:
-                    keyword = self.request.arguments['keyword'][0].decode()
-                except:
-                    code = 8943
-                    status = False
-                    message = "Please enter search keyword"
-                    raise Exception
-                searchResult = products.find(
+                productId = ObjectId(self.request.arguments['id'][0].decode())
+            except:
+                code = 9403
+                status = False
+                message = "Invalid Id"
+                raise Exception
+            proFind = products.find_one({"_id": productId})
+            if proFind:
+                proFind['_id'] = str(proFind['_id'])
+                proFind['addedBy'] = ""
+                accFind = users.find_one(
                     {
-                        "productName": {
-                            "$regex": keyword,
-                            "$options": "i"
-                        }
+                        "_id": ObjectId(proFind['accountId'])
                     }
                 )
-                async for i in searchResult:
-                    i['_id'] = str(i['_id'])
-                    result.append(i)
-                if len(result):
-                    code = 2000
-                    status = True
-                    message = "Products Found"
-                else:
-                    code = 4004
-                    status = False
-                    message = "No Products Found"
-            except:
-                code = 9043
+                if accFind:
+                    proFind['addedBy'] = accFind['firstName'] + \
+                        " " + accFind['lastName']
+                if proFind['image'] != None:
+                    proFind['image'] = uploadUrl + proFind['image']
+                result.append(proFind)
+            if len(result):
+                code = 200
+                status = True
+                message = "Product Info"
+            else:
+                code = 404
                 status = False
-                message = "Could not search"
-                raise Exception
-            code = 2000
-            status = True
-            message = "News result"
+                message = "No products found"
         except Exception as e:
             status = False
             # self.set_status(400)

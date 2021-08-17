@@ -1,4 +1,5 @@
 from common import *
+from auth import SecureHeader
 
 
 class ProductImageHandler(tornado.web.RequestHandler):
@@ -8,6 +9,12 @@ class ProductImageHandler(tornado.web.RequestHandler):
         message = ""
         result = []
         try:
+            account_id = await SecureHeader.decrypt(self.request.headers["Authorization"])
+            if account_id == None:
+                code = 8765
+                status = False
+                message = "You're not authorized"
+                raise Exception
             try:
                 image = self.request.files['image'][0]
                 # content_type, body in binary raw, file name will be received in image. Files received at self.request.files
@@ -97,6 +104,12 @@ class ProductImageHandler(tornado.web.RequestHandler):
         message = ""
         result = []
         try:
+            account_id = await SecureHeader.decrypt(self.request.headers["Authorization"])
+            if account_id == None:
+                code = 8765
+                status = False
+                message = "You're not authorized"
+                raise Exception
             productList = products.find({})
             async for i in productList:
                 i['_id'] = str(i['_id'])
@@ -146,6 +159,12 @@ class ProductImageHandler(tornado.web.RequestHandler):
         message = ""
         result = []
         try:
+            account_id = await SecureHeader.decrypt(self.request.headers["Authorization"])
+            if account_id == None:
+                code = 8765
+                status = False
+                message = "You're not authorized"
+                raise Exception
             try:
                 productId = ObjectId(
                     self.request.arguments['productId'][0].decode())

@@ -9,6 +9,8 @@ from product import ProductHandler
 from product_image import ProductImageHandler
 from search_news import SearchNewsHandler
 from product_search import ProductSearchHandler
+from my_product import MyProductHandler
+from single_product import SingleProductHandler
 
 
 def make_app():
@@ -19,6 +21,7 @@ def make_app():
         (r"/julygroup6_web/api/product/image", ProductImageHandler),
         (r"/julygroup6_web/api/search/news", SearchNewsHandler),
         (r"/julygroup6_web/api/product/search", ProductSearchHandler),
+        (r"/julygroup6_web/api/single/product", SingleProductHandler),
     ])
 
 

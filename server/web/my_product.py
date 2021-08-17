@@ -2,7 +2,7 @@ from common import *
 from auth import SecureHeader
 
 
-class ProductSearchHandler(tornado.web.RequestHandler):
+class MyProductHandler(tornado.web.RequestHandler):
     async def get(self):
         code = 4000
         status = False
@@ -15,41 +15,20 @@ class ProductSearchHandler(tornado.web.RequestHandler):
                 status = False
                 message = "You're not authorized"
                 raise Exception
-            try:
-                try:
-                    keyword = self.request.arguments['keyword'][0].decode()
-                except:
-                    code = 8943
-                    status = False
-                    message = "Please enter search keyword"
-                    raise Exception
-                searchResult = products.find(
-                    {
-                        "productName": {
-                            "$regex": keyword,
-                            "$options": "i"
-                        }
-                    }
-                )
-                async for i in searchResult:
-                    i['_id'] = str(i['_id'])
-                    result.append(i)
-                if len(result):
-                    code = 2000
-                    status = True
-                    message = "Products Found"
-                else:
-                    code = 4004
-                    status = False
-                    message = "No Products Found"
-            except:
-                code = 9043
+            productList = products.find({"accountId": account_id})
+            async for i in productList:
+                i['_id'] = str(i['_id'])
+                if i['image'] != None:
+                    i['image'] = uploadUrl + i['image']
+                result.append(i)
+            if len(result):
+                code = 200
+                status = True
+                message = "List of products"
+            else:
+                code = 404
                 status = False
-                message = "Could not search"
-                raise Exception
-            code = 2000
-            status = True
-            message = "News result"
+                message = "No products found"
         except Exception as e:
             status = False
             # self.set_status(400)
