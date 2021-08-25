@@ -4,6 +4,7 @@ from common import *
 
 
 class SignUpHandler(tornado.web.RequestHandler):
+
     async def post(self):
         code = 4000
         status = False
@@ -63,7 +64,7 @@ class SignUpHandler(tornado.web.RequestHandler):
                 message = "Phone number is already registered"
                 raise Exception
 
-            email = jsonBody.get('email')
+            email = jsonBody.get('emailAddress')
             if email == None or email == "":
                 code = 9022
                 status = False
@@ -104,7 +105,7 @@ class SignUpHandler(tornado.web.RequestHandler):
 
             code = 2000
             status = True
-            message = "Sign-up successfull"
+            message = "Sign-up successful"
         else:
             status = False
             # self.set_status(400)
