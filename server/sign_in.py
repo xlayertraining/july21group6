@@ -65,6 +65,10 @@ class SignInHandler(tornado.web.RequestHandler):
                 userAccountId = str(userFind['_id'])
                 encoded_jwt = jwt.encode(
                     {"key": userAccountId}, "icfai", algorithm="HS256")
+
+                if type(encoded_jwt) is bytes:
+                    encoded_jwt = encoded_jwt.decode()
+
                 result.append({"Authorization": encoded_jwt})
                 code = 2000
                 status = True

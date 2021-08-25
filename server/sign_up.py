@@ -93,7 +93,7 @@ class SignUpHandler(tornado.web.RequestHandler):
                 message = "Please enter valid password (6-15 characters)"
                 raise Exception
 
-            users.insert_one(
+            rs = await users.insert_one(
                 {
                     "firstName": firstName,
                     "lastName": lastName,
@@ -102,7 +102,17 @@ class SignUpHandler(tornado.web.RequestHandler):
                     "password": password
                 }
             )
+            encoded_jwt = jwt.encode(
+                {
+                    "key": str(rs.inserted_id)
+                },
+                "icfai", algorithm="HS256"
+            )
 
+            if type(encoded_jwt) is bytes:
+                encoded_jwt = encoded_jwt.decode()
+
+            result.append({"Authorization": encoded_jwt})
             code = 2000
             status = True
             message = "Sign-up successful"
