@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/icfai-cart'),
+      dir: require('path').join(__dirname, './coverage/icfai-kart'),
       subdir: '.',
       reporters: [
         { type: 'html' },
