@@ -11,11 +11,13 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignInPageComponent
+    SignInPageComponent,
+    SignUpPageComponent
   ],
   imports: [
     BrowserModule,
