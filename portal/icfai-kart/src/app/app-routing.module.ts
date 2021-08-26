@@ -1,20 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignInPageComponent } from './components/sign-in-page/sign-in-page.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
-const routes: Routes = [
+import { HomeComponent } from './components/home/home.component';
+import { AddProductComponent } from './components/product/add-product/add-product.component';
+import { EditProductComponent } from './components/product/edit-product/edit-product.component';
+import { MyProductsComponent } from './components/product/my-products/my-products.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+const routes: Routes = [  
   {
-    path: '',
-    redirectTo: 'sign_in',
-    pathMatch: 'full'
+    path: "",
+    component: SignInComponent
   },
   {
     path: "sign_in",
-    component: SignInPageComponent
+    component: SignInComponent
   },
   {
     path: "sign_up",
-    component: SignUpPageComponent
+    component: SignUpComponent
+  },
+  {
+    path: "home",
+    component: HomeComponent
+  },
+  {
+    path: "my_products",
+    component: MyProductsComponent
+  },
+  {
+    path: "add_product",
+    component: AddProductComponent
+  },
+  {
+    path: "edit_product",
+    component: EditProductComponent
   }
 ];
 
