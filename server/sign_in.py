@@ -18,7 +18,7 @@ class SignInHandler(tornado.web.RequestHandler):
             # Fields will be firstName, lastName, phoneNumber, emailAddress and password sent from front end.
             try:
                 # if in case no variable named firstName was sent, this will be None(null)
-                email = jsonBody.get('email')
+                email = jsonBody.get('emailAddress')
                 if email == None:
                     raise Exception
                 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'

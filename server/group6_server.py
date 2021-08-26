@@ -15,8 +15,8 @@ from single_product import SingleProductHandler
 
 def make_app():
     return tornado.web.Application([
-        (r"/julygroup6_web/api/sign/up", SignUpHandler),
-        (r"/julygroup6_web/api/sign/in", SignInHandler),
+        (r"/julygroup6_web/api/sign_up", SignUpHandler),
+        (r"/julygroup6_web/api/sign_in", SignInHandler),
         (r"/julygroup6_web/api/product", ProductHandler),
         (r"/julygroup6_web/api/product/image", ProductImageHandler),
         (r"/julygroup6_web/api/search/news", SearchNewsHandler),

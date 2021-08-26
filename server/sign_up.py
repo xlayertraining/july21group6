@@ -10,7 +10,7 @@ class SignUpHandler(tornado.web.RequestHandler):
         status = False
         message = ""
         result = []
-        if True:
+        try:
             try:
                 jsonBody = json.loads(self.request.body.decode())
             except:
@@ -44,7 +44,7 @@ class SignUpHandler(tornado.web.RequestHandler):
                 status = False
                 message = "Please submit valid first name(3-20 characters)"
                 raise Exception
-            try:
+            try:                
                 phoneNumber = int(jsonBody['phoneNumber'])
                 if len(str(phoneNumber)) != 10:
                     raise Exception
@@ -58,7 +58,7 @@ class SignUpHandler(tornado.web.RequestHandler):
                 "phoneNumber": phoneNumber
             })
 
-            if userFind:
+            if userFind is not None:
                 code = 8043
                 status = False
                 message = "Phone number is already registered"
@@ -85,7 +85,7 @@ class SignUpHandler(tornado.web.RequestHandler):
             '''
             try:
                 password = jsonBody.get('password')
-                if len(password) < 6 or len(password) > 15:
+                if len(password) > 15:
                     raise Exception
             except:
                 code = 9033
@@ -109,38 +109,32 @@ class SignUpHandler(tornado.web.RequestHandler):
                 "icfai", algorithm="HS256"
             )
 
-            if type(encoded_jwt) is bytes:
-                encoded_jwt = encoded_jwt.decode()
-
+            if type(encoded_jwt) is bytes:                
+                encoded_jwt = encoded_jwt.decode()            
             result.append({"Authorization": encoded_jwt})
             code = 2000
             status = True
-            message = "Sign-up successful"
-        else:
+            message = "Sign-up successful."
+
+        except Exception as e:
             status = False
-            # self.set_status(400)
-            if not len(message):
-                code = 5010
-                message = 'Internal Error, Please Contact the Support Team.'
+            # code = 5011
+            # message = 'Internal Error, Please Contact the Support Team.'
+            template = 'Exception: {0}. Argument: {1!r}'
+            iMessage = template.format(type(e).__name__, e.args)
+            # if not len(message):
+            #     message = 'Internal Error, Please Contact the Support Team.'
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = exc_tb.tb_frame.f_code.co_filename
+            print('EXC', iMessage)
+            print('EX2', 'FILE: ' + str(fname) + ' LINE: ' + str(exc_tb.tb_lineno) + ' TYPE: ' + str(exc_type))
+
         response = {
             'code': code,
             'status': status,
-            'message': message
+            'message': message,
+            'result': result
         }
-        try:
-            response['result'] = result
-            self.write(response)
-            self.finish()
-            return
-        except Exception as e:
-            status = False
-            code = 5011
-            message = 'Internal Error, Please Contact the Support Team.'
-            response = {
-                'code': code,
-                'status': status,
-                'message': message
-            }
-            self.write(response)
-            self.finish()
-            return
+        self.write(response)
+        self.finish()
+        return
