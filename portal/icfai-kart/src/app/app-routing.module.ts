@@ -6,6 +6,7 @@ import { EditProductComponent } from './components/product/edit-product/edit-pro
 import { MyProductsComponent } from './components/product/my-products/my-products.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { FromMenuComponent } from './components/from-menu/from-menu.component';
 const routes: Routes = [  
   {
     path: "",
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: "edit_product",
     component: EditProductComponent
+  },
+  {
+    path: "from_menu",
+    component: FromMenuComponent
   }
 ];
 

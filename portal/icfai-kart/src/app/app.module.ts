@@ -18,6 +18,11 @@ import { MyProductsComponent } from './components/product/my-products/my-product
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { FromMenuComponent } from './components/from-menu/from-menu.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     AddProductComponent,
     MyProductsComponent,
     EditProductComponent,
+    FromMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     RouterModule,
     MatIconModule,    
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
   ],
   providers: [
     {

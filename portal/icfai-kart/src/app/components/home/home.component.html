@@ -1,9 +1,19 @@
 <div style="background-color: #0fe9d7; height: 80px;">
 
+    <button mat-button [matMenuTriggerFor]="menu">
+
     <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" style="margin-top: 30px; margin-right: 20px;" >
         <mat-icon>menu</mat-icon>
       </button>
 
+
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>My Product</button>
+      <button mat-menu-item>Sign Out</button>
+      <button mat-menu-item>Add-Product</button>
+
+    </mat-menu>
 
 </div>
 <div fxLayout="row" fxLayoutAlign="center center" style="padding: 30px;">
@@ -18,8 +28,8 @@
 </div>
 
 <div fxLayout="column" fxLayoutAlign="center center" >
-    <button mat-raised-button color="primary" style="margin-top: 20px;">
+    <!-- <button mat-raised-button color="primary" style="margin-top: 20px;">
         <a  style="font-size: 30pt;"  >+</a>
-    </button>
+    </button> -->
 </div>
 
