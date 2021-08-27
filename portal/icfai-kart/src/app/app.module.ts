@@ -17,6 +17,7 @@ import { EditProductComponent } from './components/product/edit-product/edit-pro
 import { MyProductsComponent } from './components/product/my-products/my-products.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     MatInputModule,
     FlexLayoutModule,
     MatButtonModule,
-    RouterModule,    
+    RouterModule,
+    MatIconModule,    
   ],
   providers: [
     {
