@@ -44,7 +44,7 @@ class SignUpHandler(tornado.web.RequestHandler):
                 status = False
                 message = "Please submit valid first name(3-20 characters)"
                 raise Exception
-            try:                
+            try:
                 phoneNumber = int(jsonBody['phoneNumber'])
                 if len(str(phoneNumber)) != 10:
                     raise Exception
@@ -99,7 +99,8 @@ class SignUpHandler(tornado.web.RequestHandler):
                     "lastName": lastName,
                     "phoneNumber": phoneNumber,
                     "email": email,
-                    "password": password
+                    "password": password,
+                    "search_history": []
                 }
             )
             encoded_jwt = jwt.encode(
@@ -109,8 +110,8 @@ class SignUpHandler(tornado.web.RequestHandler):
                 "icfai", algorithm="HS256"
             )
 
-            if type(encoded_jwt) is bytes:                
-                encoded_jwt = encoded_jwt.decode()            
+            if type(encoded_jwt) is bytes:
+                encoded_jwt = encoded_jwt.decode()
             result.append({"Authorization": encoded_jwt})
             code = 2000
             status = True
@@ -127,7 +128,8 @@ class SignUpHandler(tornado.web.RequestHandler):
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = exc_tb.tb_frame.f_code.co_filename
             print('EXC', iMessage)
-            print('EX2', 'FILE: ' + str(fname) + ' LINE: ' + str(exc_tb.tb_lineno) + ' TYPE: ' + str(exc_type))
+            print('EX2', 'FILE: ' + str(fname) + ' LINE: ' +
+                  str(exc_tb.tb_lineno) + ' TYPE: ' + str(exc_type))
 
         response = {
             'code': code,

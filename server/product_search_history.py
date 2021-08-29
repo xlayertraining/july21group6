@@ -2,7 +2,7 @@ from common import *
 from auth import SecureHeader
 
 
-class SingleProductHandler(tornado.web.RequestHandler):
+class SearchHistoryHandler(tornado.web.RequestHandler):
     async def get(self):
         code = 4000
         status = False
@@ -15,50 +15,29 @@ class SingleProductHandler(tornado.web.RequestHandler):
                 status = False
                 message = "You're not authorized"
                 raise Exception
-            try:
-                productId = ObjectId(self.request.arguments['id'][0].decode())
-            except:
-                code = 9403
-                status = False
-                message = "Invalid Id"
-                raise Exception
-            proFind = products.find_one({"_id": productId})
-            if proFind:
-                proFind['_id'] = str(proFind['_id'])
-                proFind['addedBy'] = ""
-                accFind = users.find_one(
-                    {
-                        "_id": ObjectId(proFind['accountId'])
-                    }
-                )
-                if accFind:
-                    proFind['addedBy'] = accFind['firstName'] + \
-                        " " + accFind['lastName']
-                if proFind['image'] != None:
-                    proFind['image'] = uploadUrl + proFind['image']
-                result.append(proFind)
-            if len(result):
-                historyFind = users.find_one(
-                    {
-                        "_id": ObjectId(account_id)
-                    }
-                )
-                if historyFind:
-                    if str(productId) not in historyFind[search_history]:
-                        historyFind[search_history].append(str(productId))
-                        historyUpdate = users.update_one(
+            accFind = await users.find_one({"_id": ObjectId(account_id)})
+            if len(accFind['search_history']):
+                for i in accFind['search_history']:
+                    productFind = await products.find_one({"sold": False, "_id": ObjectId(i)})
+                    if productFind:
+                        productFind['_id'] = str(productFind['_id'])
+                        productFind['addedBy'] = ""
+                        accFind = users.find_one(
                             {
-                                "_id": ObjectId(account_id)
-                            },
-                            {
-                                "$push": {
-                                    "search_history": str(productId)
-                                }
+                                "_id": ObjectId(productFind['accountId'])
                             }
                         )
+                        if accFind:
+                            productFind['addedBy'] = accFind['firstName'] + \
+                                " " + accFind['lastName']
+                        if productFind['image'] != None:
+                            productFind['image'] = uploadUrl + \
+                                productFind['image']
+                        result.append(productFind)
+            if len(result):
                 code = 200
                 status = True
-                message = "Product Info"
+                message = "List of products in history"
             else:
                 code = 404
                 status = False
