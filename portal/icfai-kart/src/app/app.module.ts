@@ -22,6 +22,7 @@ import { FromMenuComponent } from './components/from-menu/from-menu.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
+import { SingleProductComponent } from './components/product/single-product/single-product.component';
 
 
 
@@ -35,6 +36,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MyProductsComponent,
     EditProductComponent,
     FromMenuComponent,
+    SingleProductComponent,
   ],
   imports: [
     BrowserModule,

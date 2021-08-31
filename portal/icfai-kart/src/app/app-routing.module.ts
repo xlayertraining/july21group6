@@ -7,6 +7,7 @@ import { MyProductsComponent } from './components/product/my-products/my-product
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FromMenuComponent } from './components/from-menu/from-menu.component';
+import { SingleProductComponent } from './components/product/single-product/single-product.component';
 const routes: Routes = [  
   {
     path: "",
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: "from_menu",
     component: FromMenuComponent
+  },
+  {
+    path: "single_product",
+    component: SingleProductComponent
+
   }
 ];
 
