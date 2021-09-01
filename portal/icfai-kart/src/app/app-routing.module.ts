@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './components/home/home.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { EditProductComponent } from './components/product/edit-product/edit-product.component';
@@ -49,7 +52,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+  CommonModule,
+  RouterModule.forRoot(routes,{
+  useHash: true
+  })
+  ],
+  exports: [
+  ],
 })
 export class AppRoutingModule { }
