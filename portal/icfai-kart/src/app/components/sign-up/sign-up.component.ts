@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private networkService: NetworkService,private router: Router) {} 
+  constructor(private networkService: NetworkService,private router: Router) { } 
 
   firstName: String = '';
   lastName: String = '';
