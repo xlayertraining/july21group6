@@ -23,6 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import { SingleProductComponent } from './components/product/single-product/single-product.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -52,6 +53,7 @@ import { SingleProductComponent } from './components/product/single-product/sing
     MatCardModule,
     MatGridListModule,
     MatMenuModule,
+    HttpClientModule,
   ],
   providers: [
     {
