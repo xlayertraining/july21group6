@@ -15,6 +15,8 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
   onSignUp() {
     this.router.navigate(['sign_up']);
   }
