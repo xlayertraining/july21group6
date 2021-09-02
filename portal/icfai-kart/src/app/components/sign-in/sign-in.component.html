@@ -1,22 +1,20 @@
-<div style="padding: 30px;">
-    <div fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="column" fxLayoutAlign="center center" style="padding: 60px;">
+    <p style="font-size: 15pt;">Welcome to ICFAI KART</p>
 
-        <a style="font-size:15pt;">WELCOME TO ICFAI KART</a>
-        <a style="font-size: 7pt;"><b>Enter your Email and Password to Sign In</b></a>
+    <p style="font-size: 10pt;">Enter your Email and Password to Sign In</p>
 
-        <mat-form-field appearance="outline" style="margin-top: 30px;">
-            <mat-label>Email</mat-label>
-            <input matInput type="text">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password">
-        </mat-form-field>
-        <button mat-raised-button color="primary" style="margin-top: 40px;">
-            <a style="font-size: 10pt;">LOGIN</a>
-        </button>
-        <button mat-raised-button color="primary" style="margin-top: 20px;" (click)="onSignUp()">
-            <a style="font-size: 10pt;">Sign up</a>
-        </button>
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput ="[(ngModel)]email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput ="[(ngModel)]password">
+    </mat-form-field>
+
+    <button style="margin-top: 20px;" mat-raised-button color="primary" (click)="onSignInPost()" >LOGIN</button>
+
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" style=" margin-top: 15px" (click)="onSignUp()" >Sign Up</button>    
     </div>
 </div>
