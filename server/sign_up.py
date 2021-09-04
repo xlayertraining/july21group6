@@ -5,6 +5,9 @@ from common import *
 
 class SignUpHandler(tornado.web.RequestHandler):
 
+    def options(self):
+        self.write({})
+
     async def post(self):
         code = 4000
         status = False

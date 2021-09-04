@@ -19,5 +19,5 @@ $IN_LINE &
 
 rm $PID_HOME/$APPLICATION.pid
 
-pgrep "python3 ./group6_server.py > dev/null" -f > $PID_HOME/$APPLICATION.pid
+pgrep "python3 ./$APPLICATION > dev/null" -f > $PID_HOME/$APPLICATION.pid
 

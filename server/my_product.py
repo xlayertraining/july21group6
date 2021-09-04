@@ -3,6 +3,10 @@ from auth import SecureHeader
 
 
 class MyProductHandler(tornado.web.RequestHandler):
+
+    def options(self):
+        self.write({})
+
     async def get(self):
         code = 4000
         status = False

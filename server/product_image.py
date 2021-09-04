@@ -3,6 +3,10 @@ from auth import SecureHeader
 
 
 class ProductImageHandler(tornado.web.RequestHandler):
+    
+    def options(self):
+        self.write({})
+
     async def post(self):
         code = 4000
         status = False

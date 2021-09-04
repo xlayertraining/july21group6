@@ -2,6 +2,10 @@ from common import *
 
 
 class SearchNewsHandler(tornado.web.RequestHandler):
+
+    def options(self):
+        self.write({})
+
     async def get(self):
         code = 4000
         status = False
