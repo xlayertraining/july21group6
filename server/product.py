@@ -55,9 +55,11 @@ class ProductHandler(tornado.web.RequestHandler):
                 description = jsonBody.get('description')
                 if description == None:
                     raise Exception
+                description = str(description)
                 if len(description) < 10 or len(description) > 150:
                     raise Exception
-            except:
+            except Exception as e:
+                print('error', e)
                 code = 9033
                 status = False
                 message = "Please submit valid description(10-150 characters)"
@@ -299,7 +301,7 @@ class ProductHandler(tornado.web.RequestHandler):
             async for i in productList:
                 i['_id'] = str(i['_id'])
                 i['addedBy'] = ""
-                accFind = users.find_one(
+                accFind = await users.find_one(
                     {
                         "_id": ObjectId(i['accountId'])
                     }
@@ -325,6 +327,7 @@ class ProductHandler(tornado.web.RequestHandler):
                 template = 'Exception: {0}. Argument: {1!r}'
                 code = 5010
                 iMessage = template.format(type(e).__name__, e.args)
+                print(iMessage)
                 message = 'Internal Error, Please Contact the Support Team.'
         response = {
             'code': code,
