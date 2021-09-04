@@ -5,11 +5,11 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput ="[(ngModel)]email">
+        <input matInput [(ngModel)]="email">
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput ="[(ngModel)]password">
+        <input matInput [(ngModel)]="password">
     </mat-form-field>
 
     <button style="margin-top: 20px;" mat-raised-button color="primary" (click)="onSignInPost()" >LOGIN</button>

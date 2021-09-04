@@ -24,6 +24,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatMenuModule} from '@angular/material/menu';
 import { SingleProductComponent } from './components/product/single-product/single-product.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -54,6 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatMenuModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     {

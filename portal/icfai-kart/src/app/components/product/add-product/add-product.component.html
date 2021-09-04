@@ -1,39 +1,39 @@
 <div style="padding: 30px;">
     <div fxLayout="column" fxLayoutAlign="center center">
 
-       <h2> <a style="font-size:15pt;">ADD PRODUCT</a></h2>
-       
-        <mat-form-field appearance="outline" style="margin-top: 30px;">
-            <mat-label>Product Name</mat-label>
-            <input matInput type="text">
-        </mat-form-field>
+        <h2> <a style="font-size:15pt;">ADD PRODUCT</a></h2>
 
-        <mat-form-field appearance="outline">
-            <mat-label>Price</mat-label>
-            <input matInput type="number">
-        </mat-form-field>
+        <div fxLayout="column" style="width: 500px;">
+            <mat-form-field appearance="outline" style="margin-top: 30px;">
+                <mat-label>Product Name</mat-label>
+                <input matInput type="text" [(ngModel)]="productName">
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" >
-            <mat-label>Description</mat-label>
-            <input matInput type="text">
-        </mat-form-field>
-        
-        <!-- <mat-form-field appearance="outline">
-            <mat-label>Images</mat-label>
-            <input matInput>
-        </mat-form-field> -->
-          
-        <button mat-raised-button color="primary" style="margin-top: 20px;">
-            
-            <a style="font-size: 10pt;">upload Images</a>
-        </button>
+            <mat-form-field appearance="outline">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" [(ngModel)]="productPrice">
+            </mat-form-field>
 
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput type="text" [(ngModel)]="productDesc" style="max-height: 150px; min-height: 150px;"></textarea>
+            </mat-form-field>
 
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput type="text" [(ngModel)]="productDetails"  style="max-height: 200px; min-height: 200px;"></textarea>
+            </mat-form-field>
 
+            <mat-form-field appearance="outline">
+                <mat-label>Whatsapp number</mat-label>
+                <input matInput type="number" [(ngModel)]="whatsappNumber">
+            </mat-form-field>
 
-        <button mat-raised-button color="primary" style="margin-top: 40px;">
+        </div>
+
+        <button mat-raised-button color="primary" style="margin-top: 40px;" (click)="onSubmit()">
             <a style="font-size: 10pt;">SUBMIT</a>
         </button>
-       
+
     </div>
 </div>

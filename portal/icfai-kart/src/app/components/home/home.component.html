@@ -2,16 +2,17 @@
 
     <button mat-button [matMenuTriggerFor]="menu">
 
-    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon" style="margin-top: 30px; margin-right: 20px;" >
-        <mat-icon>menu</mat-icon>
-      </button>
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon"
+            style="margin-top: 30px; margin-right: 20px;">
+            <mat-icon>menu</mat-icon>
+        </button>
 
 
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>My Product</button>
-      <button mat-menu-item>Sign Out</button>
-      <button mat-menu-item>Add-Product</button>
+        <button mat-menu-item>My Product</button>
+        <button mat-menu-item (click)="onSignOut()">Sign Out</button>
+        <button mat-menu-item (click)="onAddProduct()">Add Product</button>
 
     </mat-menu>
 
@@ -22,15 +23,50 @@
         <input matInput type="text">
     </mat-form-field>
 
-    <button mat-fab color="primary" >
+    <button mat-fab color="primary">
         <mat-icon>search</mat-icon>
     </button>
 </div>
 
-<div fxLayout="column" fxLayoutAlign="center center" >
+<div fxLayout="column" fxLayoutAlign="center center">
     <!-- <button mat-raised-button color="primary" style="margin-top: 20px;">
         <a  style="font-size: 30pt;"  >+</a>
     </button> -->
 </div>
 
-<app-from-menu></app-from-menu>
+<!-- <app-from-menu></app-from-menu> -->
+
+<div *ngFor="let idx of productList" style="margin: 10px; margin-bottom: 20px; margin-left: 40px; margin-right: 40px;">
+    <mat-card>
+        <div>
+            <b>Product name </b>
+            <br>
+            <a>{{idx.productName}}</a>
+        </div>
+        <div>
+            <b>Price </b>
+            <br>
+            <a>{{idx.price}}</a>
+        </div>
+        <div>
+            <b>Description </b>
+            <br>
+            <a>{{idx.description}}</a>
+        </div>
+
+        <div>
+            <b>Added By </b>
+            <br>
+            <a>{{idx.addedBy}}</a>
+        </div>
+        <div>
+            <b>Whatsapp number </b>
+            <br>
+            <a>{{idx.whatsappNumber}}</a>
+        </div>
+    </mat-card>
+</div>
+
+<div style="height: 300px;">
+
+</div>

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private networkService: NetworkService,private router: Router) { } 
+  constructor(private networkService: NetworkService, private router: Router) { } 
 
   firstName: String = '';
   lastName: String = '';
@@ -72,6 +72,7 @@ export class SignUpComponent implements OnInit {
       if (success.status == true) {
         // sign up success
         localStorage.setItem(environment.authKey, success.result[0].Authorization);
+        this.networkService.updateHeaders();
         this.router.navigate(['home']);
       } else {
         alert(success.message);

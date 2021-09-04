@@ -12,8 +12,8 @@ import { environment } from 'src/environments/environment';
 export class SignInComponent implements OnInit {
   constructor(private networkService: NetworkService, private router: Router) { }
 
-  email: String = '';
-  password: String = '';
+  email = '';
+  password =  '';
   
   
   ngOnInit(): void {
@@ -45,6 +45,7 @@ export class SignInComponent implements OnInit {
       if (success.status == true) {
         // sign in success
         localStorage.setItem(environment.authKey, success.result[0].Authorization);
+        this.networkService.updateHeaders();
         this.router.navigate(['home']);
       } else {
         alert(success.message);
