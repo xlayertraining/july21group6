@@ -46,5 +46,7 @@ export class AddProductComponent implements OnInit {
 
     });
   }
-
+onHome() {
+    this.router.navigate(['home']);
+  }
 }
