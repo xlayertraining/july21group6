@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   onAddProduct(): void {
     this.router.navigate(['add_product']);
   }
+   onMyProduct(): void {
+    this.router.navigate(['my_products']);
+  }
 
   getProducts(): void {
     

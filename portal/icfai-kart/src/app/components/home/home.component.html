@@ -10,7 +10,7 @@
 
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>My Product</button>
+        <button mat-menu-item (click)="onMyProduct()" >My Product</button>
         <button mat-menu-item (click)="onSignOut()">Sign Out</button>
         <button mat-menu-item (click)="onAddProduct()">Add Product</button>
 
